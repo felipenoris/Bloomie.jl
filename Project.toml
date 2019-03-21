@@ -1,0 +1,11 @@
+name = "Bloomie"
+uuid = "89fc6528-4c1e-11e9-2754-014a813776e7"
+authors = ["Carlos Ungil <ungil@mac.com>"]
+version = "0.1.0"
+
+[deps]
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+Libdl = "8f399da3-3557-5675-b5ff-fb832c97cbdb"
+Match = "7eb4fadd-790c-5f42-8a69-bfa0b872bfbf"
+Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"

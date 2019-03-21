@@ -7,11 +7,11 @@ global bulk_fields = ["IEST_BRAND_PRODUCT_LIST","BLOOMBERG_PEERS",
 
 function flatten_all(a)
     while any(x-> !(typeof(x)==String) && (typeof(x)<:Array || typeof(x)<:Tuple), a)
-        a = vcat([typeof(x)==String?[x]:collect(Base.Iterators.flatten([x])) for x in a]...)
+        a = vcat([typeof(x) == String ? [x] : collect(Base.Iterators.flatten([x])) for x in a]...)
     end
     a
 end
-            
+
 function date(val)
     # BLPAPI_DATETIME_YEAR_PART | ..._MONTH_PART | ..._DAY_PART
     @assert val.parts == 0x01 | 0x02 | 0x04
@@ -179,7 +179,7 @@ end
 
 function process_tree(x::Tuple,context="")
     @Match.match x[1] begin
-        "securityData" => context=="H"?security_data_hist(Dict(x[2])):map(x->security_data(Dict(x[2])),x[2])
+        "securityData" => context=="H" ? security_data_hist(Dict(x[2])) : map(x->security_data(Dict(x[2])),x[2])
         "barData" => bar_data(Dict(x[2]))
         "responseError" => Dict([k=>process_tree(v) for (k,v) in x[2]])
         "data" => map(a->Dict([Symbol(k)=>process_tree(v) for (k,v) in a[2][3][2]]),x[2][2][2])
