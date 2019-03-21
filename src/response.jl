@@ -135,6 +135,7 @@ function retrieve_response(timeout=10)
     out
 end
 
+#=
 function security_data(x)
     global bulk_fields
     #@show AbstractTrees.Tree(x)
@@ -166,6 +167,7 @@ function bar_data(x)
     rows = map(x->x[2],x["barTickData"])
     DataFrames.DataFrame(map(row->Dict([Symbol(k)=>process_tree(v) for (k,v) in row]),rows))
 end
+=#
 
 function process_tree(x::Any,context="")
     if typeof(x) == Int32 && x == -2147483648

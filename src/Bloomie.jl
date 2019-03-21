@@ -1,7 +1,6 @@
 module Bloomie
 
 import Libdl
-import DataFrames
 import Match
 using Printf
 
